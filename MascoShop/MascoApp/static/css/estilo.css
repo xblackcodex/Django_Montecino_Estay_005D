@@ -1,0 +1,92 @@
+
+body{
+    background-color: rgb(253, 253, 253);
+}
+.nav{
+    background-color: rgb(105, 105, 105);
+}
+.separacion{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+.pp{
+    padding-left: 45%;
+}
+html{
+    height: 100%;
+}
+footer{
+    padding: 20px;
+    color: #ffffff;
+    height: 800px;
+    margin-top: 200px;
+}
+
+footer div p{
+    font-size: 12px;
+    color: #ffffff;
+    padding-top: 5px;
+    line-height: 10px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.div{
+    border: 1px solid rgb(12, 86, 88);
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    padding: 5px;
+    text-align: center;
+}
+
+.div2{
+    border: 2px solid rgb(12, 86, 88);
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    padding: 10%;
+    text-align: left;
+}
+
+#div1{
+    height:80;
+    width: 100%;
+    background-color: rgb(155, 214, 216);
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+#div2{
+    height:80;
+    width: 100%;
+    background-image: url('https://media.istockphoto.com/vectors/dog-paw-isolated-dog-bone-seamless-pattern-vector-puppy-cat-wallpaper-vector-id916132524?s=2048x2048');
+    
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .texto-borde {
+    -webkit-text-stroke: 2px rgb(12, 86, 88);
+  }
+
+.ndiv{
+    font-size: 12px;
+    padding-top: 5px;
+    line-height: 10px;
+    width: 100%;
+}
+
+  .btn-outline-primary {
+    color: rgb(12, 86, 88);
+    background-color: transparent;
+    background-image: none;
+    border-color: rgb(12, 86, 88);
+    text-align: center;
+    margin: auto;
+}

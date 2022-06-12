@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link href="{% static '/css/bootstrap.min.css' %}" type="text/css" rel="stylesheet"> 
+    <link href="{% static '/css/estilo.css' %}" type="text/css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    <script src="js/funciones.js"></script>
+    <title>Dias Feriados</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Popper JS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            $("#enviar").click(function()
+            {
+                $.get("https://apis.digital.gob.cl/fl/feriados",
+                    function(data)
+                    {
+                        
+                        $.each(data,function(i,item)
+                        {
+                            $("#categorias").append("<tr><td>"+ item.nombre +
+                            "</td><td>"+ item.comentarios +
+                            "</td><td>"+ item.fecha +
+                            "</td><td>"+item.irrenunciable +"</td></tr>");
+                        });
+
+                    });
+               
+            });
+
+           
+        })
+    
+    </script>
+</head>
+<body>
+  {% load static %}
+    <nav class="navbar navbar-expand-sm navbar-light " style="background-color: rgb(12, 86, 88);">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#opciones" title="Inicio">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- logo -->
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'img/icono.png' %}" width="30" title="Inicio" height="30">
+        </a>
+        
+        <!-- enlaces -->
+    <div class="collapse navbar-collapse" id="opciones">   
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home' %}" title="Principal" style="color:rgb(253, 253, 253)">Principal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'somos' %}" title="Quienes Somos" style="color:rgb(253, 253, 253)">Quienes Somos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'galeria' %}" title="Categoria" style="color:rgb(253, 253, 253)">Catálogo</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'feriados' %}" title="Feriados" style="color:rgb(253, 253, 253)">Dias que no trabajamos</a>
+        </li>                       
+          </ul>
+        </div>
+          <div class="row">
+            <div class="col-md">      
+              <div>
+                <div class="div" style="width: 300px; margin-right: 100%; margin-left: 5%">
+                  <input class="form-control me-2" type="text" placeholder="">
+                </div>
+              </div>       
+            </div>
+            <div class="col-md">        
+              <div>
+                <div class="div" style="width: 10%; margin-right: 100%; margin-left: 5%;">
+                  <button class="btn btn-secondary"  type="button" data-bs-toggle="modal" data-bs-target="#myModal">Ingresar</button>
+    
+                  <!-- The Modal -->
+                  <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+    
+                        <!-- Modal Header -->
+                        <div class="modal-header" style="background-color: rgb(12, 86, 88)">
+                          <h4 class="modal-title" style="color: rgb(253, 253, 253); padding-left: 35%;">Iniciar sesión</h4>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+    
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                          <h6 style="font-size: 20px;">Nombre de Usuario</h6>
+                          <input class="form-control me-2" type="text" placeholder="">
+                        </div>
+                        <div class="modal-body">
+                          <h6 style="font-size: 20px;">Contraseña</h6>
+                          <input class="form-control me-2" type="password" placeholder="">
+                        </div>
+                        <a href="{% url 'login' %}" type="button" class="btn btn-secondary" target="_blank" style="margin-left: 40%; margin-right: 40%;">Ingresar</a>
+                        <br>
+    
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                          <div class="col-md">        
+                            <div class="text-center">
+                              <div class="card-body" style="width: 100%;">
+                                <h3 class="col-md" style="color: rgb(12, 86, 88); font-size: smaller;" title="Ropa"><strong>¿Olvido su contraseña?</strong></h3>
+                              </div>
+                            </div>          
+                          </div>
+                          <div class="col-md">        
+                            <div class="text-center">
+                              <div class="card-body" style="width: 100%;">
+                                <a class="link" href="{% url 'registrar' %}" style="color:rgb(12, 86, 88)"><strong>Registrarse</strong></a>
+                              </div>
+                            </div>          
+                          </div>
+                        </div>
+    
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>          
+            </div>
+          </div>
+      </nav>
+    <BR><BR>
+    
+    <div class="container">
+        <h1 style="text-align: center; color: rgb(12, 86, 88);">Fechas en las que nos encontramos fuera de servicio</h1>
+        <br>
+        <div id="caja">
+            <button type="button" class="btn btn-outline-secundary" style="border: 2px solid; color: rgb(12, 86, 88); background-color:#B3FEEA ;" id="enviar">Presione aqui para cargar los datos</button>
+        </div>
+        <br>
+        <table class="table" id="categorias" style="border: 2px solid; color: rgb(12, 86, 88); background-color:#B3FEEA">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre </th>
+                    <th scope="col">Comentarios </th>
+                    <th scope="col">Fecha </th>
+                    <th scope="col">Irrenunciable </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+    
+        </table>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <footer style="background-color: rgb(12, 86, 88)">
+        <div class="row col-12">
+          <br>
+            <div class="col-lg-2">
+              <br>
+                <a href="index.html"><img src="{% static 'img/icono.png'%}" alt="logoBookStop" width="60px" title="Inicio"></a>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="col-lg-2">
+              <br>
+                <strong>Contacto</strong>
+                <br><br>
+                <div class="row">
+                  <img src="{% static 'img/telefono.png' %}" alt="" style="margin-right: 10px; margin-left: 5px; width: 50px">
+                  <button id="imagen" type="button" style="text-align: left; color: aliceblue;" class="btn btn-link" >Presiona aqui para contactarnos.</button>
+                </div>
+                <div class="row">
+                  <img src="{% static 'img/correo.png' %}" alt=""
+                      style="margin-right: 5px; margin-left: 5px; width: 50px">
+                  <a href="mailto:masco.shop.2022@gmail.com?Subject:Consulta" style="text-align: left; color: aliceblue;">Escribenos</a>
+                </div>
+                <br>
+            </div>
+            <br>
+            <br>
+            <div class="col-lg-2">
+              <br>
+                <img src="{% static 'img/gps.png'%}" alt="" width="20px" height="20px" style="margin-right: 5px; margin-left: 5px;">
+                <a><strong>Direccion</a></strong>
+                <p>Av. Esq. Blanca 501, Maipú</p>
+            </div>
+            <br>
+            <div class="col-lg-2">
+              <br>
+                <strong>Síguenos</strong>
+                <br><br>
+                <div class="row">
+                    <img src="{% static 'img/instagram.png'%}" alt="" style="width: 50px">
+                </div>
+                <br>
+                <div class="row">
+                    <img src="{% static 'img/twitter.png'%}" alt=""  style="width: 50px">
+                </div>
+                <br>
+                <div class="row">
+                    <img src="{% static 'img/facebook.png'%}" alt=""  style="width: 50px">
+                </div>
+                <br>
+            </div>
+            <div class="col-lg-2">
+              <br>
+              <p>&copy; MascoShop - 2022</p>
+              <p><strong>- Matias Estay</p></strong>
+              <p><strong>- Marcelo Montecino</p></strong>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.getElementById("validado").addEventListener("click", function() {
+         alert("Desde ahora recibirá todas nuestras novedades para su mascota.");
+        });
+      </script>
+      <script>
+        document.getElementById("imagen").addEventListener("click", function() {
+         alert("¿Quieres comunicarte con nosotros? Copia este enlace en tu navegador https://api.whatsapp.com/send?phone=56992795132");
+        });
+      </script> 
+</body>
+</html>
